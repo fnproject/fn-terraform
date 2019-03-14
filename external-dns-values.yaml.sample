@@ -1,0 +1,11 @@
+provider: dyn
+
+dyn:
+    customerName: my-customer-name
+    username: my-username
+    password: my-password
+
+domainFilters: ["${dns_zone}"]
+zoneIdFilters: ["${dns_zone}"]
+
+txtPrefix: "_d."
