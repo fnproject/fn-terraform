@@ -32,6 +32,8 @@ See `external-dns-values.yaml.sample` for a simple example using Dyn.  Note that
 and that the file will be interpolated through Terraform.  Copy this file to `external-dns-values.yaml` and fill in as
 appropriate based on your DNS provider.
 
+See https://github.com/helm/charts/tree/master/stable/external-dns for configuration options.
+
 ### After install:
 
 1. Fetch Grafana admin password:
