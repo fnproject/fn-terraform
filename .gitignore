@@ -10,3 +10,4 @@
 
 fn-helm/*
 external-dns-values.yaml
+fn-values.yaml

@@ -1,14 +1,19 @@
 resource "null_resource" "init_fn" {
-  provisioner "local-exec" {
-    command = "rm -rf fn-helm && git clone https://github.com/fnproject/fn-helm.git && helm dependency update fn-helm/fn"
-  }
+    provisioner "local-exec" {
+        command = "rm -rf fn-helm && git clone https://github.com/fnproject/fn-helm.git && helm dependency update fn-helm/fn"
+    }
+}
+
+data "template_file" "fn-config" {
+    template = "${file("${path.module}/fn-values.yaml")}"
 }
 
 // TODO: Enable metrics in Grafana dashboard.
 resource "helm_release" "fn" {
     name       = "fn"
     chart      = "fn-helm/fn"
-    depends_on = ["null_resource.init_fn"]
+    depends_on = ["null_resource.init_fn",
+                  "helm_release.cert-manager"]
     wait       = true
 
     set {
@@ -51,4 +56,8 @@ resource "helm_release" "fn" {
         name  = "fn_runner.resources.limits.memory"
         value = "16Gi"
     }
+
+    values = [
+        "${data.template_file.fn-config.rendered}"
+    ]
 }

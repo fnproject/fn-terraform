@@ -19,6 +19,13 @@ with the following features:
     * `kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'`
     * `helm init --service-account tiller --upgrade`
 
+1. Install Cert-Manager custom resource definitions
+    * `kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.7/deploy/manifests/00-crds.yaml`
+
+1. Install Let's Encrypt Staging fake root certificate
+    * https://letsencrypt.org/certs/fakelerootx1.pem
+    * Install is OS specific and beyond scope of this document.
+
 ### Configuring External-DNS
 
 See `external-dns-values.yaml.sample` for a simple example using Dyn.  Note that the `dns_zone` variable is available 

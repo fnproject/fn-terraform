@@ -7,3 +7,7 @@ variable fn_cluster_name {
 }
 
 variable dns_zone {}
+
+variable namespace_cert_manager {
+    default = "cert-manager"
+}
