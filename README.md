@@ -38,6 +38,13 @@ appropriate based on your DNS provider.
     * `kubectl get secret grafana -o yaml`
     * Decode it using `base64`
     * echo <encoded bits from kubectl output> | base64 --decode
+
+1. Fetch Ingress endpoints:
+    * `kubectl get ingress`
+
+1. Configure Fn (~/.fn/contexts/default)
+    * https://fn.api.<dyn_zone>.com/
+
 1. Add Prometheus as Data Source in Grafana: `http://prometheus-server`
 
 ### Working with Fn behind nginx-ingress
