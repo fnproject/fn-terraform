@@ -1,7 +1,8 @@
 resource "helm_release" "prometheus" {
-    name  = "prometheus"
-    chart = "stable/prometheus"
-    wait  = false
+    name      = "prometheus"
+    chart     = "stable/prometheus"
+    namespace = "${var.namespace_prometheus}"
+    wait      = false
 
     set {
         name  = "server.ingress.enabled"
@@ -15,9 +16,10 @@ resource "helm_release" "prometheus" {
 }
 
 resource "helm_release" "grafana" {
-    name  = "grafana"
-    chart = "stable/grafana"
-    wait  = false
+    name      = "grafana"
+    chart     = "stable/grafana"
+    namespace = "${var.namespace_grafana}"
+    wait      = false
 
     set {
         name  = "ingress.enabled"

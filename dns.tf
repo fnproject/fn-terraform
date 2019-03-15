@@ -9,6 +9,7 @@ data "template_file" "external-dns-config" {
 resource "helm_release" "external-dns" {
     name       = "external-dns"
     chart      = "./external-dns"
+    namespace  = "${var.namespace_external_dns}"
     wait       = true
     depends_on = ["helm_release.nginx_ingress"]
 

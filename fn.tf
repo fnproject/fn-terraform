@@ -14,6 +14,7 @@ resource "helm_release" "fn" {
     chart      = "fn-helm/fn"
     depends_on = ["null_resource.init_fn",
                   "helm_release.cert-manager"]
+    namespace  = "${var.namespace_fn}"
     wait       = true
 
     set {

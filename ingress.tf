@@ -1,15 +1,17 @@
 data "kubernetes_service" "nginx-ingress-service" {
   metadata {
-    name = "nginx-ingress-controller"
+    namespace = "${var.namespace_nginx_ingress}"
+    name      = "nginx-ingress-controller"
   }
   depends_on = ["helm_release.nginx_ingress"]
 }
 
 # TODO: Add Nginx scraper to Prometheus config.
 resource "helm_release" "nginx_ingress" {
-    name  = "nginx-ingress"
-    chart = "stable/nginx-ingress"
-    wait  = true
+    name      = "nginx-ingress"
+    chart     = "stable/nginx-ingress"
+    namespace = "${var.namespace_nginx_ingress}"
+    wait      = true
 
     set {
         name  = "controller.publishService.enabled"
