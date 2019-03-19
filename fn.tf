@@ -22,6 +22,11 @@ resource "helm_release" "fn" {
         value = "${var.fn_cluster_name}"
     }
 
+    set { 
+        name  = "fn_lb_runner.service.port"
+        value = "443"
+    }
+
     set {
         name  = "fn_lb_runner.service.ingress_hostname"
         value = "lb.${var.dns_zone}"
