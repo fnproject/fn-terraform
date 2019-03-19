@@ -48,9 +48,3 @@ See https://github.com/helm/charts/tree/master/stable/external-dns for configura
     * https://fn.api.<dyn_zone>.com/
 
 1. Add Prometheus as Data Source in Grafana: `http://prometheus-server`
-
-### Working with Fn behind nginx-ingress
-
-To use certain commands, such as `fn invoke`, you will need to set an HTTP_PROXY which is based off of the `dns_zone` variable.
-For example:
-    `export HTTP_PROXY=fn.api.example.com:80`
