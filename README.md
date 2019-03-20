@@ -45,6 +45,6 @@ See https://github.com/helm/charts/tree/master/stable/external-dns for configura
     * `kubectl get ingress`
 
 1. Configure Fn (~/.fn/contexts/default)
-    * https://fn.api.<dyn_zone>.com/
+    * https://fn.api.<dns_zone>.com/
 
 1. Add Prometheus as Data Source in Grafana: `http://prometheus-server`
