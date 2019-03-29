@@ -1,4 +1,4 @@
-/*resource "kubernetes_namespace" "cert-manager" {
+resource "kubernetes_namespace" "cert-manager" {
     metadata {
         name = "${var.namespace_cert_manager}"
 
@@ -6,7 +6,7 @@
             "certmanager.k8s.io/disable-validation" = "true"
         }
     }
-}*/
+}
 
 data "helm_repository" "jetstack" {
     name = "jetstack"
