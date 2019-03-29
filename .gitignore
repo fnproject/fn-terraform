@@ -1,13 +1,8 @@
-#  Local .terraform directories
+.vscode
 **/.terraform/*
-
-# .tfstate files
 *.tfstate
 *.tfstate.*
-
-# .tfvars files
 *.tfvars
-
 fn-helm/*
 external-dns-values.yaml
 fn-values.yaml

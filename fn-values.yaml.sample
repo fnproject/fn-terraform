@@ -4,16 +4,16 @@ ingress:
   # instead of tls.default_issuer_name
   # https://github.com/fnproject/fn-helm/blob/master/fn/templates/cluster-issuer.yaml#L5
   tls:
-    default_issuer_name: letsencrypt-staging
+    default_issuer_name: letsencrypt-prod
   annotations:
     kubernetes.io/ingress.class: nginx
-    certmanager.k8s.io/cluster-issuer: letsencrypt-staging
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
     kubernetes.io/tls-acme: “true”
 
 # secret refernce is a k8s secret to your
 tls:
   enabled: true
-  default_issuer_name: letsencrypt-staging
+  default_issuer_name: letsencrypt-prod
   acme_registration_email: <your email>
   secret_reference: fn-tls
-  server: https://acme-staging-v02.api.letsencrypt.org/directory
+  server: https://acme-v02.api.letsencrypt.org/directory
