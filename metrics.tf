@@ -34,7 +34,7 @@ resource "helm_release" "grafana" {
     name      = "grafana"
     chart     = "stable/grafana"
     namespace = "${var.namespace_grafana}"
-    wait      = false
+    wait      = true
 
     set {
         name  = "ingress.enabled"
