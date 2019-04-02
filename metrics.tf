@@ -15,6 +15,21 @@ resource "helm_release" "prometheus" {
     }
 }
 
+data "kubernetes_secret" "grafana_admin_secret" {
+  metadata {
+    namespace = "${var.namespace_grafana}"
+    name      = "grafana"
+  }
+}
+
+output "grafana_admin_user" {
+  value = "${data.kubernetes_secret.grafana_admin_secret.data.admin-user}"
+}
+
+output "grafana_admin_password" {
+  value = "${data.kubernetes_secret.grafana_admin_secret.data.admin-password}"
+}
+
 resource "helm_release" "grafana" {
     name      = "grafana"
     chart     = "stable/grafana"
