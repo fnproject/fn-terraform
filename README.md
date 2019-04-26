@@ -1,5 +1,7 @@
 # Terraform Module for Fn
 
+*** EXPERIMENTAL ***
+
 This repository is intended to provide a quick start for deploying a production ready install of Fn
 with the following features:
 
@@ -22,17 +24,20 @@ with the following features:
 1. Install Cert-Manager custom resource definitions
     * `kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.7/deploy/manifests/00-crds.yaml`
 
-1. Install Let's Encrypt Staging fake root certificate
-    * https://letsencrypt.org/certs/fakelerootx1.pem
-    * Install is OS specific and beyond scope of this document.
-
 ### Configuring External-DNS
 
 See `external-dns-values.yaml.sample` for a simple example using Dyn.  Note that the `dns_zone` variable is available 
-and that the file will be interpolated through Terraform.  Copy this file to `external-dns-values.yaml` and fill in as
-appropriate based on your DNS provider.
+and that the file will be interpolated through Terraform.
+
+1. Copy `external-dns-values.yaml.sample` to `external-dns-values.yaml`
+1. Fill in appropriate values based on your DNS provider.
 
 See https://github.com/helm/charts/tree/master/stable/external-dns for configuration options.
+
+### Configuring TLS / Let's Encrypt
+
+1. Copy `fn-values.yaml.sample` to `fn-values.yaml`
+1. Fill in your email address and other values as needed.  Let's Encrypt will use this email to notify you of certificate expirations.
 
 ### After install:
 
@@ -46,5 +51,3 @@ See https://github.com/helm/charts/tree/master/stable/external-dns for configura
 
 1. Configure Fn (~/.fn/contexts/default)
     * https://fn.api.<dns_zone>.com/
-
-1. Add Prometheus as Data Source in Grafana: `http://prometheus-server`
