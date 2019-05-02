@@ -26,7 +26,7 @@ with the following features:
 
 ### Configuring External-DNS
 
-See `external-dns-values.yaml.sample` for a simple example using Dyn.  Note that the `dns_zone` variable is available 
+See `external-dns-values.yaml.sample` for a simple example using Dyn.  Note that the `dns_zone` variable is available
 and that the file will be interpolated through Terraform.
 
 1. Copy `external-dns-values.yaml.sample` to `external-dns-values.yaml`
@@ -51,3 +51,8 @@ See https://github.com/helm/charts/tree/master/stable/external-dns for configura
 
 1. Configure Fn (~/.fn/contexts/default)
     * https://fn.api.<dns_zone>.com/
+
+NOTES:
+
+External DNS helm chart is cloned in this repo pending this pull request's approval:
+* https://github.com/helm/charts/pull/12166
